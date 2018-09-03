@@ -1,0 +1,27 @@
+{
+	"name": "dimadin/nth-order-discount-for-woocommerce",
+	"description": "Automatic discounts after every nth order",
+	"keywords": ["WooCommerce"],
+	"type": "wordpress-plugin",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Milan Dinić",
+			"email": "milan@srpski.biz",
+			"homepage": "https://milandinic.com/"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/dimadin/nth-order-discount-for-woocommerce/issues",
+		"source": "https://github.com/dimadin/nth-order-discount-for-woocommerce"
+	},
+	"require": {
+		"php": ">=5.4",
+		"composer/installers": "~1.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"dimadin\\WP\\Plugin\\WC\\NthOrderDiscount\\": "inc/"
+		}
+	}
+}
