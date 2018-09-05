@@ -67,7 +67,7 @@ class Coupon {
 		// Get recent completed orders of customer.
 		$orders = wc_get_orders(
 			[
-				'customer' => get_current_user_id(),
+				'customer' => WC()->session->get_customer_id(),
 				'status'   => 'completed',
 				'limit'    => $required_completed,
 			]
@@ -88,7 +88,7 @@ class Coupon {
 		// Get incomplete orders of customer since last order.
 		$orders = wc_get_orders(
 			[
-				'customer'     => get_current_user_id(),
+				'customer'     => WC()->session->get_customer_id(),
 				'status'       => [
 					'on-hold',
 					'pending',
