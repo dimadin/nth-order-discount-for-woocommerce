@@ -51,6 +51,9 @@ class Main {
 		// Add discount if it doesn't exist to the cart each time totals are calculated.
 		add_action( 'woocommerce_before_calculate_totals', [ __NAMESPACE__ . '\Coupon',                 'maybe_add_discount'    ]        );
 
+		// Check that coupon is for current user.
+		add_filter( 'woocommerce_check_cart_items',        [ __NAMESPACE__ . '\Coupon',                 'validate_customer'     ]        );
+
 		// Add settings fields to WooCommerce/Settings/General screen.
 		add_filter( 'woocommerce_general_settings',        [ __NAMESPACE__ . '\Settings\Page',          'add_settings'          ]        );
 

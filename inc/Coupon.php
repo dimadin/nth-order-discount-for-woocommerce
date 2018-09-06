@@ -235,6 +235,7 @@ class Coupon {
 		$coupon->set_usage_limit( 1 );
 		$coupon->set_usage_limit_per_user( 1 );
 		$coupon->add_meta_data( 'for_nth_order', true );
+		$coupon->add_meta_data( 'customer_id', WC()->session->get_customer_id() );
 		$coupon->save();
 
 		return $coupon;
@@ -293,5 +294,21 @@ class Coupon {
 	 */
 	public static function emptied_cart() {
 		unset( WC()->session->nth_order_coupon_removed );
+	}
+
+	/**
+	 * Check that coupon is for current user.
+	 *
+	 * @since 1.0.0
+	 */
+	public static function validate_customer() {
+		foreach ( WC()->cart->get_applied_coupons() as $code ) {
+			$coupon = new WC_Coupon( $code );
+
+			if ( $coupon->is_valid() && $coupon->get_meta( 'customer_id' ) !== WC()->session->get_customer_id() ) {
+				$coupon->add_coupon_message( WC_Coupon::E_WC_COUPON_NOT_YOURS_REMOVED );
+				WC()->cart->remove_coupon( $code );
+			}
+		}
 	}
 }
