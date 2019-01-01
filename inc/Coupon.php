@@ -67,7 +67,7 @@ class Coupon {
 		// Get recent completed orders of customer.
 		$orders = wc_get_orders(
 			[
-				'customer' => WC()->session->get_customer_id(),
+				'customer' => get_current_user_id(),
 				'status'   => 'completed',
 				'limit'    => $required_completed,
 			]
@@ -88,7 +88,7 @@ class Coupon {
 		// Get incomplete orders of customer since last order.
 		$orders = wc_get_orders(
 			[
-				'customer'     => WC()->session->get_customer_id(),
+				'customer'     => get_current_user_id(),
 				'status'       => [
 					'on-hold',
 					'pending',
@@ -235,7 +235,7 @@ class Coupon {
 		$coupon->set_usage_limit( 1 );
 		$coupon->set_usage_limit_per_user( 1 );
 		$coupon->add_meta_data( 'for_nth_order', true );
-		$coupon->add_meta_data( 'customer_id', WC()->session->get_customer_id() );
+		$coupon->add_meta_data( 'customer_id', get_current_user_id() );
 		$coupon->save();
 
 		return $coupon;
@@ -305,7 +305,7 @@ class Coupon {
 		foreach ( WC()->cart->get_applied_coupons() as $code ) {
 			$coupon = new WC_Coupon( $code );
 
-			if ( $coupon->is_valid() && $coupon->get_meta( 'customer_id' ) !== WC()->session->get_customer_id() ) {
+			if ( $coupon->is_valid() && $coupon->get_meta( 'customer_id' ) != get_current_user_id() ) { // phpcs:ignore WordPress.PHP.StrictComparisons.LooseComparison
 				$coupon->add_coupon_message( WC_Coupon::E_WC_COUPON_NOT_YOURS_REMOVED );
 				WC()->cart->remove_coupon( $code );
 			}
