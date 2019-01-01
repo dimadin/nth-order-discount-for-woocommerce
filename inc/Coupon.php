@@ -26,6 +26,11 @@ class Coupon {
 	 * @param \WC_Cart $cart WooCommerce cart object.
 	 */
 	public static function maybe_add_discount( $cart ) {
+		// Check if user is logged in.
+		if ( ! is_user_logged_in() ) {
+			return;
+		}
+
 		// Check if cart already used but removed discount.
 		if ( WC()->session->get( 'nth_order_coupon_removed' ) ) {
 			return;
