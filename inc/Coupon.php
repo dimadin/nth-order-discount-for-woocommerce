@@ -188,8 +188,8 @@ class Coupon {
 		try {
 			$coupon = static::create_coupon( $cart );
 			$cart->add_discount( $coupon->get_code() );
-		} catch ( Exception $e ) {
-			wc_add_notice( $e->getMessage(), 'error' );
+		} catch ( Exception $e ) { // phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedCatch
+			// Do not do anything, for now at least.
 		}
 
 		remove_filter( 'woocommerce_coupons_enabled', '__return_true', 975 );
