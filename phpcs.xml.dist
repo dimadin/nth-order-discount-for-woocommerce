@@ -36,7 +36,7 @@
 		</properties>
 	</rule>
 	<!-- The WordPress Coding Standards state that all class files should start with 'class-'. -->
-	<!-- commonWP follows the PSR-0 standard for naming class files, because it uses autoloading via Composer. -->
+	<!-- Nth Order Discount for WooCommerce follows the PSR-0 standard for naming class files, because it uses autoloading via Composer. -->
 	<rule ref="WordPress.Files.FileName">
 		<properties>
 			<property name="strict_class_file_names" value="false" />
