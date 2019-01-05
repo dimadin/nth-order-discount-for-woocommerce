@@ -9,6 +9,9 @@
  * Domain Path: /languages/
  * License:     GPL
  *
+ * WC requires at least: 3.1
+ * WC tested up to: 3.5
+ *
  * @package NthOrderDiscount
  * @since 1.0.0
  */
