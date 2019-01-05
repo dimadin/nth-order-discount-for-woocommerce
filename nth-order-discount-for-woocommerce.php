@@ -5,7 +5,7 @@
  * Description: Automatic discounts after every nth order
  * Author:      Milan Dinić
  * Author URI:  https://milandinic.com/
- * Version:     1.0.0-beta-4
+ * Version:     1.0.0
  * Text Domain: nth-order-discount-for-woocommerce
  * Domain Path: /languages/
  * License:     GPL
