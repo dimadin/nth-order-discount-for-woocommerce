@@ -1,6 +1,7 @@
 <?php
 /**
  * Plugin Name: Nth Order Discount for WooCommerce
+ * Plugin URI:  https://milandinic.com/wordpress/plugins/nth-order-discount-for-woocommerce/
  * Description: Automatic discounts after every nth order
  * Author:      Milan Dinić
  * Author URI:  https://milandinic.com/
